@@ -1,0 +1,4 @@
+bin/
+tests/test.rex.*
+.idea/
+todo.txt
