@@ -1,6 +1,7 @@
 #include "help.hpp"
 
 
+//    note(start, states, letters, fileName);
 void newGraph(State* &start, std::unordered_map<std::string, State*> &states, std::string &letters, std::string fileName) {
     std::ofstream file(fileName + ".dot");
     file << "digraph fsa {\n";
@@ -10,7 +11,7 @@ void newGraph(State* &start, std::unordered_map<std::string, State*> &states, st
         if (state.second->final) file << "double";
         file << "circle]\n";
     }
-    file << "\n    \"\" -> \"" << start->name << "\"";
+    file << "\n    \"\" -> \"" << start->name << "\"\n";
     for (std::pair<std::string, State*> state : states) {
         for (std::pair<char, std::vector<State*>> transition : state.second->transitions) {
             for (State* nextState : transition.second) {
@@ -42,7 +43,7 @@ int main(int argc, char** argv) {
         if (state.second->final) file << "double";
         file << "circle]\n";
     }
-    file << "\n    \"\" -> \"" << start->name << "\"";
+    file << "\n    \"\" -> \"" << start->name << "\"\n";
     for (std::pair<std::string, State*> state : states) {
         for (std::pair<char, std::vector<State*>> transition : state.second->transitions) {
             for (State* nextState : transition.second) {

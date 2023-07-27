@@ -6,7 +6,7 @@ BIN=bin
 OBJ=$(BIN)/obj
 TESTS=tests
 
-all: $(BIN)/newGraph $(BIN)/newNames $(BIN)/rexTOnfa $(BIN)/nfaTOdfa $(BIN)/dfaTOmin $(BIN)/dfaTOcpp
+all: $(BIN)/newGraph $(BIN)/newNames $(BIN)/rexTOnfa $(BIN)/nfaTOdfa $(BIN)/dfaTOmin $(BIN)/dfaTOcpp $(BIN)/numTOdfa $(BIN)/twoTOone
 
 $(OBJ)/help.o: $(SRC)/help.cpp $(SRC)/help.hpp
 	mkdir -p bin bin/obj
@@ -36,10 +36,18 @@ $(BIN)/dfaTOcpp: src/dfaTOcpp.cpp $(OBJ)/help.o
 	$(CC) $(CFLAGS) -c -o $(OBJ)/dfaTOcpp.o $(SRC)/dfaTOcpp.cpp
 	$(CC) $(CFLAGS) -o $(BIN)/dfaTOcpp $(SRC)/dfaTOcpp.cpp $(OBJ)/help.o -DALONE
 
-main: all
-	$(CC) $(CFLAGS) -o $(BIN)/main $(SRC)/main.cpp $(OBJ)/help.o $(OBJ)/newGraph.o $(OBJ)/newNames.o $(OBJ)/rexTOnfa.o $(OBJ)/nfaTOdfa.o $(OBJ)/dfaTOmin.o $(OBJ)/dfaTOcpp.o
+$(BIN)/numTOdfa: src/numTOdfa.cpp $(OBJ)/help.o
+	$(CC) $(CFLAGS) -c -o $(OBJ)/numTOdfa.o $(SRC)/numTOdfa.cpp
+	$(CC) $(CFLAGS) -o $(BIN)/numTOdfa $(SRC)/numTOdfa.cpp $(OBJ)/help.o -DALONE
 
-test: all
+$(BIN)/twoTOone: src/twoTOone.cpp $(OBJ)/help.o
+	$(CC) $(CFLAGS) -c -o $(OBJ)/twoTOone.o $(SRC)/twoTOone.cpp
+	$(CC) $(CFLAGS) -o $(BIN)/twoTOone $(SRC)/twoTOone.cpp $(OBJ)/help.o -DALONE
+
+main: all
+	$(CC) $(CFLAGS) -o $(BIN)/main $(SRC)/main.cpp $(OBJ)/help.o $(OBJ)/newGraph.o $(OBJ)/newNames.o $(OBJ)/rexTOnfa.o $(OBJ)/nfaTOdfa.o $(OBJ)/dfaTOmin.o $(OBJ)/dfaTOcpp.o $(OBJ)/numTOdfa.o $(OBJ)/twoTOone.o
+
+rexTOmin: all
 	./$(BIN)/rexTOnfa $(TESTS)/test.rex
 	./$(BIN)/nfaTOdfa $(TESTS)/test.rex.nfa
 	./$(BIN)/newNames $(TESTS)/test.rex.nfa.dfa

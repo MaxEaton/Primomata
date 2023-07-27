@@ -29,5 +29,7 @@ void rexTOnfa(State* &start, std::unordered_map<std::string, State*> &states, st
 void nfaTOdfa(State* &start, std::unordered_map<std::string, State*> &states, std::string &letters);
 void dfaTOmin(State* &start, std::unordered_map<std::string, State*> &states, std::string &letters);
 void dfaTOcpp(State* &start, std::unordered_map<std::string, State*> &states, std::string &letters, std::string fileName);
+void numTOdfa(State* &start, std::unordered_map<std::string, State*> &states, std::string &letters, int n, bool accept);
+void twoTOone(State* &start, std::unordered_map<std::string, State*> &states, std::string &letters, State* &start2, std::unordered_map<std::string, State*> &states2, std::string &letters2);
 
 #endif //AUTOMATA_HELP_HPP

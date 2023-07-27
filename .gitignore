@@ -1,4 +1,4 @@
-bin/
-tests/test.rex.*
 .idea/
+bin/
+tests/
 todo.txt
