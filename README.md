@@ -19,9 +19,7 @@ Primomata is a project that explores the properties of prime numbers within the 
 
 ## Results
 
-<div style="display: flex;">
-  <img src="tests/primes.dfa.dot.svg" alt="primes" style="width: 50%;">
-  <img src="tests/composites.dfa.dot.svg" alt="composites" style="width: 47.5%;">
-</div>
+![composites.dfa.dot.svg](tests%2Fcomposites.dfa.dot.svg)
+![primes.dfa.dot.svg](tests%2Fprimes.dfa.dot.svg)
 
 As can be seen, the minimized DFAs for both the multiples of 15 and for the multiples of both 3 and 5 have the same number of states. With this technique of combining prime DFAs, the potential of determining the primality of a given number 'n' was explored. By constructing a DFA that combines all prime DFAs up to the square of the largest known prime, a theoretical complexity of 'log2(n)' for primality testing can be achieved. However, due to the fact that primes do not compress, this is an impractical solution due to the size of such a DFA. 
