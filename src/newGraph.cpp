@@ -5,6 +5,7 @@
 void newGraph(State* &start, std::unordered_map<std::string, State*> &states, std::string &letters, std::string fileName) {
     std::ofstream file(fileName + ".dot");
     file << "digraph fsa {\n";
+    file << "ratio=\"1\"\n";
     file << "    \"\" [shape=none]\n";
     for (std::pair<std::string, State*> state : states) {
         file << "    \"" << state.first << "\"" << " [shape=";

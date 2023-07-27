@@ -16,7 +16,6 @@ int main(int argc, char** argv) {
     twoTOone(start, states, letters, start2, states2, letters2);
     nfaTOdfa(start, states, letters);
     dfaTOmin(start, states, letters);
-    newNames(start, states, letters);
     dfaTOcpp(start, states, letters, fileName);
     newGraph(start, states, letters, fileName);
     note(start, states, letters, fileName);
